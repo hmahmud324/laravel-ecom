@@ -65,7 +65,7 @@ class Product extends Model
         self::$product->regular_price         = $request->regular_price;
         self::$product->selling_price         = $request->selling_price;
         self::$product->stock_amount          = $request->stock_amount;
-        self::$product->reorder_label         = $request->reorder_label;
+        self::$product->reorder_level         = $request->reorder_level;
         self::$product->image                 = self::$imageUrl;
         self::$product->save();
         return self::$product;

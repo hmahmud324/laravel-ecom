@@ -108,8 +108,7 @@
                         <div class="row mb-4">
                             <label class="col-md-3 form-label">Product Image</label>
                             <div class="col-md-9">
-                                <input type="file" class="form-control" name="image"
-                                    style="height: auto; max-width: 100%;" />
+                                <input type="file" class="form-control" name="image" style="height: auto; max-width: 100%;" />
                                 <img src="{{ asset($product->image) }}" alt="" height="100" width="120"
                                     style="max-width: 100%" />
                             </div>
@@ -126,7 +125,7 @@
                             </div>
                         </div>
                         <div class="mb-0 mt-4 row justify-content-end">
-                            <div class="col-md-9 me-auto">
+                            <div class="col-md-9">
                                 <button class="btn btn-primary">Update Product Info</button>
                             </div>
                         </div>

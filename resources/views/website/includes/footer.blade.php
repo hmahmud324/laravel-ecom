@@ -102,34 +102,12 @@
                          class="widget-title text-[#9A9CAA] text-sm leading-[110%] font-display font-medium uppercase mb-5">
                          Category</h2>
                      <ul class="flex flex-col gap-3">
-                         <li>
-                             <a href="#"
-                                 class="footer-link text-gray-black text-base leading-[110%] hover:text-[#007580] transition-all duration-500 inline-block pb-1 ease-in-out">Sofa</a>
-                         </li>
-                         <li>
-                             <a href="#"
-                                 class="footer-link text-gray-black text-base leading-[110%] hover:text-[#007580] transition-all duration-500 inline-block pb-1">Armchair</a>
-                         </li>
-                         <li>
-                             <a href="#"
-                                 class="footer-link text-gray-black text-base leading-[110%] hover:text-[#007580] transition-all duration-500 inline-block pb-1">Wing
-                                 Chair</a>
-                         </li>
-                         <li>
-                             <a href="#"
-                                 class="footer-link text-gray-black text-base leading-[110%] hover:text-[#007580] transition-all duration-500 inline-block pb-1">Desk
-                                 Chair</a>
-                         </li>
-                         <li>
-                             <a href="#"
-                                 class="footer-link text-gray-black text-base leading-[110%] hover:text-[#007580] transition-all duration-500 inline-block pb-1">wooden
-                                 Chair</a>
-                         </li>
-                         <li>
-                             <a href="#"
-                                 class="footer-link text-gray-black text-base leading-[110%] hover:text-[#007580] transition-all duration-500 inline-block pb-1">Park
-                                 Bench</a>
-                         </li>
+                        @foreach ($categories as $category )
+                        <li>
+                            <a href="#"
+                                class="footer-link text-gray-black text-base leading-[110%] hover:text-[#007580] transition-all duration-500 inline-block pb-1 ease-in-out">{{ $category->name }}</a>
+                        </li>
+                        @endforeach
                      </ul>
                  </div>
 

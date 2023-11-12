@@ -1,4 +1,5 @@
 <!-- header area start -->
+
 <header class="font-display">
     <div id="header-sticky" class="">
         <div class="top-header bg-secondary">
@@ -60,7 +61,7 @@
             <div class="container px-3 md:px-5 xl:px-0">
                 <div class="flex justify-between items-center py-5">
                     <div>
-                        <a href="index.html">
+                        <a href="#">
                             <img src="{{ asset('/') }}website/assets/images/all-img/logo.png" alt="">
                         </a>
                     </div>
@@ -249,7 +250,7 @@
             <div class="py-3.5 flex justify-between items-center">
                 <div class="flex gap-8 items-center">
                     <div class="relative">
-                        <button
+                        <button 
                             class="max-h-12 inline-flex items-center justify-center gap-4 py-3.5 px-5 border border-grayscales-700 rounded-md custom-dropdown text-gray-black text-sm leading-4 font-medium font-display">
                             <span class="text-gray-black inline-flex">
                                 <svg width="18" height="14" viewBox="0 0 18 14" fill="none"
@@ -263,78 +264,25 @@
                         </button>
                         <div class="dropdown-content">
                             <ul class="p-3">
+                                @foreach ($categories as $category )
                                 <li>
-                                    <a href="#">Wodden</a>
+                                    <a href="#">{{ $category->name }}</a>
                                 </li>
-                                <li>
-                                    <a href="#">Partex</a>
-                                </li>
-                                <li>
-                                    <a href="#">Plywood</a>
-                                </li>
-                                <li>
-                                    <a href="#">Segun</a>
-                                </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
 
                     <ul class="lg:flex gap-8 items-center hidden main-menu">
                         <li>
-                            <a href="index.html">Home</a>
+                            <a href="{{route('home')}}">Home</a>
                         </li>
                         <li>
-                            <a href="products.html">Shop</a>
+                            <a href="{{ route('all-product') }}">Shop</a>
                         </li>
                         <li>
-                            <a href="product-details.html">Product</a>
-                        </li>
-                        <li class="relative">
-                            <a href="javascript:void(0);" class="inline-flex gap-2 items-center">Pages
-                                <span>
-                                    <img src="{{ asset('/') }}website/assets/images/all-img/select-arrow.png"
-                                        alt="">
-                                </span>
-                            </a>
-                            <ul>
-                                <li>
-                                    <a href="404.html">404</a>
-                                </li>
-                                <li>
-                                    <a href="account-setting.html">Account Setting</a>
-                                </li>
-                                <li>
-                                    <a href="sign-in.html">Sign In</a>
-                                </li>
-                                <li>
-                                    <a href="sign-up.html">Sign Up</a>
-                                </li>
-                                <li>
-                                    <a href="forget-password.html">Forget Password</a>
-                                </li>
-                                <li>
-                                    <a href="change-password.html">Change Password</a>
-                                </li>
-                                <li>
-                                    <a href="products.html">Product List</a>
-                                </li>
-                                <li>
-                                    <a href="product-details.html">Product Details</a>
-                                </li>
-                                <li>
-                                    <a href="shopping-cart.html">Shopping Cart</a>
-                                </li>
-                                <li>
-                                    <a href="wishlist.html">Wishlist</a>
-                                </li>
-                                <li>
-                                    <a href="checkout-billing.html">Checkout Billing</a>
-                                </li>
-                                <li>
-                                    <a href="checkout-shopping.html">Checkout Shoping</a>
-                                </li>
-                            </ul>
-                        </li>
+                            <a href="">Contact</a>
+                        </li>  
                         <li>
                             <a href="">About</a>
                         </li>

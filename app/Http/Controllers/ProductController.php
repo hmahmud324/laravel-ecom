@@ -75,7 +75,7 @@ class ProductController extends Controller
     {
         Product::updateProduct($request,$product->id);
         if ($request->other_image) {
-            OtherImage::updateOtherImage($request,$product->id);
+            OtherImage::updateOtherImages($request,$product->id);
         }
         return redirect('/product')->with('message', 'Product info updated successfully.');
 
@@ -87,7 +87,7 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         Product::deleteProduct($product->id);
-        OtherImage::deleteOtherImage($product->id);
+        OtherImage::deleteOtherImages($product->id);
         return redirect('/product')->with('message', 'Product info deleted successfully.');
     }
 }

@@ -23,6 +23,9 @@ use App\Http\Controllers\ProductController;
 
 Route::controller(EcommerceController::class)->group(function (){
     Route::get('/', 'index')->name('home');
+    Route::get('/product/index', 'product')->name('all-product');
+    Route::get('/product/detail/{id}', 'detail')->name('product-detail');
+
 });
 
 

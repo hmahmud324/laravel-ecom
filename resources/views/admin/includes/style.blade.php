@@ -5,7 +5,7 @@
 <link href="{{asset('/')}}admin/assets/css/tabler-vendors.min.css?1684106062" rel="stylesheet"/>
 <link href="{{asset('/')}}admin/assets/css/demo.min.css?1684106062" rel="stylesheet"/>
 <link href="{{asset('/')}}admin/assets/css/all.css" rel="stylesheet"/>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/dropzone.min.css" />
 
  <!-- FILE UPLODE CSS -->
  <link href="{{asset('/')}}admin/assets/libs/fileuploads/css/fileupload.css" rel="stylesheet" type="text/css"/>

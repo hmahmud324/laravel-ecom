@@ -6,6 +6,6 @@
     <!-- css link here  -->
     <link rel="stylesheet" href="{{ asset('/') }}website/assets/plugins/css/swipper.css">
     <link rel="stylesheet" href="{{ asset('/') }}website/assets/plugins/css/select2.css">
-    <link rel="stylesheet" href="{{ asset('/') }}website/assets/css/tailwind.css">
-    <link rel="stylesheet" href="{{ asset('/') }}website/assets/css/styles.css">
-    <link rel="stylesheet" href="{{ asset('/') }}website/assets/css/responsive.css">
+    <link rel="stylesheet" href="{{ asset('/') }}website/css/tailwind.css">
+    <link rel="stylesheet" href="{{ asset('/') }}website/css/styles.css">
+    <link rel="stylesheet" href="{{ asset('/') }}website/css/responsive.css">
