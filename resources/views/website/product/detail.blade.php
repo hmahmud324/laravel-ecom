@@ -139,21 +139,32 @@
                             </li> --}}
                         </ul>
                     </div>
+                    <form action="{{route('cart.add',['id'=> $product->id])}}" method="POST">
+                         @csrf
                     <div class="flex flex-wrap lg:flex-nowrap items-center gap-3 mb-6">
-                        <div
-                            class="border inline-flex justify-around items-center h-[52px] w-[140px] xl:w-[343px] add-to-cart-btn border-[#D6D9DD] rounded-lg">
-                            <span
-                                class="w-5 h-5 inline-flex justify-center items-center text-[#9A9CAA] pl-[14px] select-none minus"
-                                id="minus">-</span>
-                            <input type="text" class="text-[#272343] text-base plus_mines_input select-none"
-                                value="01" />
-                            <span
-                                class="w-5 h-5 inline-flex justify-center items-center text-[#9A9CAA] pr-[14px] select-none plus"
-                                id="plus">+</span>
-                        </div>
+                        <div class="quantity-wrapper border rounded-9">
+                            <input
+                              type="number"
+                              class="form-control"
+                              value="01"
+                              min="1"
+                              name="qty"
+                              style="
+                                height: 48px;
+                                width: 140px;
+                                padding: 10px;
+                                border: 1px solid #007580;
+                                font-size: 18px;
+                                font-weight: 500;
+                                text-align: center;
+                              "
+                              required
+                            />
+                          </div>
+                          
                         <div class="flex gap-3 w-full">
                             <div class="xl:w-[343px] add-to-cart-btn">
-                                <button
+                                <button type="submit"
                                     class="inline-flex gap-3 py-3.5 bg-[#029FAE] hover:bg-[#272343] transition-all duration-300 rounded-lg px-4 xl:w-[343px] w-full items-center justify-center">
                                     <span class="text-white text-base">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -195,6 +206,7 @@
                             </div>
                         </div>
                     </div>
+                </form>
                     <div class="flex gap-2.5 items-center">
                         <p>Share on</p>
                         <ul class="m-0 p-0 flex gap-1">
@@ -604,5 +616,24 @@
         </div>
     </section>
     <!-- product list section end-->
-    @yield('scripts')
+    @push('scripts')
+    <script>
+     $(document).ready(function() {
+         $('.minus').click(function() {
+             var $input = $(this).parent().find('input');
+             var count = parseInt($input.val()) - 1;
+             count = count < 1 ? 1 : count;
+             $input.val(count);
+             $input.change();
+             return false;
+         });
+         $('.plus').click(function() {
+             var $input = $(this).parent().find('input');
+             $input.val(parseInt($input.val()) + 1);
+             $input.change();
+             return false;
+         });
+     });
+   </script>
+    @endpush
 @endsection

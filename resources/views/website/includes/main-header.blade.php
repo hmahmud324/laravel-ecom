@@ -106,72 +106,65 @@
                                     </span>
                                     <span>Cart</span>
                                     <span
-                                        class="bg-dark-accents text-white rounded-full py-[3px] px-[9px] ml-1 inline-flex justify-center items-center text-[10px] leading-[100%]">2</span>
+                                        class="bg-dark-accents text-white rounded-full py-[3px] px-[9px] ml-1 inline-flex justify-center items-center text-[10px] leading-[100%]">
+                                        @if (count(Cart::content()) == 0)
+                                            {{ 0 }}
+                                        @else
+                                            {{ count(Cart::content()) }}
+                                        @endif
+                                    </span>
                                 </a>
                                 <div class="cart-content">
+
                                     <ul class="p-6">
-                                        <li class="pb-4">
-                                            <div class="flex items-center justify-between">
-                                                <div class="flex items-center gap-1">
+                                        @php($sum = 0)
+                                        @foreach (Cart::content() as $item)
+                                            <li class="pb-4">
+                                                <div class="flex items-center justify-between">
+                                                    <div class="flex items-center gap-1">
+                                                        <div>
+                                                            <img src="{{ asset($item->options->image) }}"
+                                                                alt="" style="height: 80px; width:80px;">
+                                                        </div>
+                                                        <div class="px-2">
+                                                            <h2 class="text-gray-black">
+                                                                <span>{{ $item->name }}</span>
+                                                                <span
+                                                                    class="text-[#636270]">x{{ $item->qty }}</span>
+                                                            </h2>
+                                                            <p class="text-gray-black font-semibold mb-0">
+                                                                ${{ $item->price * $item->qty }}</p>
+                                                        </div>
+                                                    </div>
                                                     <div>
-                                                        <img src="{{ asset('/') }}website/assets/images/all-img/cart-01.png"
-                                                            alt="">
-                                                    </div>
-                                                    <div class="px-2">
-                                                        <h2 class="text-gray-black"><span>Isolate Sofa Chair</span>
-                                                            <span class="text-[#636270]">x5</span></h2>
-                                                        <p class="text-gray-black font-semibold mb-0">$150.00</p>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <button
-                                                        class="hover:bg-[#F0F2F3] bg-transparent p-2 hover:text-gray-black rounded-full text-[#9A9CAA] transition-all duration-500">
-                                                        <svg width="28" height="28" viewBox="0 0 28 28"
-                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M10 10L14 14M14 14L18 10M14 14L10 18M14 14L18 18"
-                                                                stroke="currentColor" stroke-width="1.5"
-                                                                stroke-linecap="round" stroke-linejoin="round" />
-                                                        </svg>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="py-4">
-                                            <div class="flex items-center justify-between">
-                                                <div class="flex items-center gap-1">
-                                                    <div>
-                                                        <img src="{{ asset('/') }}website/assets/images/all-img/cart-01.png"
-                                                            alt="">
-                                                    </div>
-                                                    <div class="px-2">
-                                                        <h2 class="text-gray-black"><span>Isolate Sofa Chair</span>
-                                                            <span class="text-[#636270]">x5</span></h2>
-                                                        <p class="text-gray-black font-semibold mb-0">$150.00</p>
+                                                        <a href="{{ route('cart.delete', ['id' => $item->rowId]) }}"
+                                                            onclick="return confirm('Are you sure to delete this?...')"
+                                                            class="hover:bg-[#F0F2F3] bg-transparent p-2 hover:text-gray-black rounded-full text-[#9A9CAA] transition-all duration-500">
+                                                            <svg width="28" height="28" viewBox="0 0 28 28"
+                                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M10 10L14 14M14 14L18 10M14 14L10 18M14 14L18 18"
+                                                                    stroke="currentColor" stroke-width="1.5"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                            </svg>
+                                                        </a>
                                                     </div>
                                                 </div>
-                                                <div>
-                                                    <button
-                                                        class="hover:bg-[#F0F2F3] bg-transparent p-2 hover:text-gray-black rounded-full text-[#9A9CAA] transition-all duration-500">
-                                                        <svg width="28" height="28" viewBox="0 0 28 28"
-                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M10 10L14 14M14 14L18 10M14 14L10 18M14 14L18 18"
-                                                                stroke="currentColor" stroke-width="1.5"
-                                                                stroke-linecap="round" stroke-linejoin="round" />
-                                                        </svg>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </li>
+                                            </li>
+                                            @php($sum = $sum + $item->qty * $item->price)
+                                        @endforeach
                                         <div class="flex justify-between items-center py-2 mb-4">
-                                            <p class="text-[#636270] text-lg">2 Products</p>
-                                            <p class="text-gray-black text-xl font-medium">$250.00</p>
+                                            <p class="text-[#636270] text-lg">
+                                                {{ count(Cart::content()) }}&nbsp;Products</p>
+                                            <p class="text-gray-black text-xl font-medium">${{ $sum }}</p>
                                         </div>
                                         <div class="flex justify-between items-center">
-                                            <a href="shopping-cart.html" class="btn-transparent">View Cart</a>
+                                            <a href="{{ route('cart.show') }}" class="btn-transparent">View Cart</a>
                                             <a href="checkout-shopping.html" class="btn-primary">Checkout</a>
                                         </div>
                                     </ul>
                                 </div>
+
                             </li>
                             <li class="inline-flex items-center justify-center">
                                 <a href="#"
@@ -250,7 +243,7 @@
             <div class="py-3.5 flex justify-between items-center">
                 <div class="flex gap-8 items-center">
                     <div class="relative">
-                        <button 
+                        <button
                             class="max-h-12 inline-flex items-center justify-center gap-4 py-3.5 px-5 border border-grayscales-700 rounded-md custom-dropdown text-gray-black text-sm leading-4 font-medium font-display">
                             <span class="text-gray-black inline-flex">
                                 <svg width="18" height="14" viewBox="0 0 18 14" fill="none"
@@ -264,10 +257,10 @@
                         </button>
                         <div class="dropdown-content">
                             <ul class="p-3">
-                                @foreach ($categories as $category )
-                                <li>
-                                    <a href="#">{{ $category->name }}</a>
-                                </li>
+                                @foreach ($categories as $category)
+                                    <li>
+                                        <a href="#">{{ $category->name }}</a>
+                                    </li>
                                 @endforeach
                             </ul>
                         </div>
@@ -275,14 +268,14 @@
 
                     <ul class="lg:flex gap-8 items-center hidden main-menu">
                         <li>
-                            <a href="{{route('home')}}">Home</a>
+                            <a href="{{ route('home') }}">Home</a>
                         </li>
                         <li>
                             <a href="{{ route('all-product') }}">Shop</a>
                         </li>
                         <li>
                             <a href="">Contact</a>
-                        </li>  
+                        </li>
                         <li>
                             <a href="">About</a>
                         </li>
@@ -290,7 +283,8 @@
                 </div>
                 <div>
                     <p class="text-grayscales-900 inline-flex gap-2 items-center text-sm font-display">
-                        <span>Contact:</span><span class="text-secondary font-medium">(808) 555-0111</span></p>
+                        <span>Contact:</span><span class="text-secondary font-medium">(808) 555-0111</span>
+                    </p>
                 </div>
             </div>
         </div>

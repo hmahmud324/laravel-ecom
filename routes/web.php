@@ -3,10 +3,11 @@
 
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\EcommerceController;
 use App\Http\Controllers\ProductController;
 
@@ -26,9 +27,12 @@ Route::controller(EcommerceController::class)->group(function (){
     Route::get('/product/index', 'product')->name('all-product');
     Route::get('/product/detail/{id}', 'detail')->name('product-detail');
 
+    Route::post('/add-to-cart/{id}', [CartController::class, 'index'])->name('cart.add');
+    Route::get('/my-shopping-cart', [CartController::class, 'show'])->name('cart.show');
+    Route::post('/update-shopping-cart/{id}', [CartController::class, 'update'])->name('cart.update');
+    Route::get('/delete-shopping-cart/{id}', [CartController::class, 'delete'])->name('cart.delete');
+
 });
-
-
 
 
 
@@ -42,6 +46,7 @@ Route::get('/dashboard', function () {
         return '';
     }
 })->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
 //    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

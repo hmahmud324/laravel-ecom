@@ -201,5 +201,11 @@
         </div>
     </section>
     <!-- product List End -->
-    @stack('script')
+    @push('script')
+    <script>
+     function dismiss(el){
+     el.parentNode.style.display='none';
+     };
+   </script>
+    @endpush
 @endsection
