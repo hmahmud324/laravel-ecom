@@ -3,13 +3,15 @@
 
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
+// use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EcommerceController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CustomerAuthController;
+use App\Http\Controllers\CustomerDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +34,22 @@ Route::controller(EcommerceController::class)->group(function (){
     Route::post('/update-shopping-cart/{id}', [CartController::class, 'update'])->name('cart.update');
     Route::get('/delete-shopping-cart/{id}', [CartController::class, 'delete'])->name('cart.delete');
 
+});
+
+
+Route::get('/customer-registration', [CustomerAuthController::class, 'registration'])->name('customer.registration');
+Route::post('/customer-registration', [CustomerAuthController::class, 'newRegistration'])->name('customer.registration');
+Route::get('/customer-login', [CustomerAuthController::class, 'login'])->name('customer.login');
+Route::post('/customer-login', [CustomerAuthController::class, 'loginCheck'])->name('customer.login');
+Route::get('/customer-logout', [CustomerAuthController::class, 'logout'])->name('customer.logout');
+
+
+Route::middleware(['customer'])->group(function () {
+    Route::get('/my-dashboard', [CustomerDashboardController::class, 'index'])->name('customer.dashboard');
+    Route::get('/my-profile', [CustomerDashboardController::class, 'profile'])->name('customer.profile');
+    Route::get('/my-order', [CustomerDashboardController::class, 'order'])->name('customer.order');
+    Route::get('/my-order-detail', [CustomerDashboardController::class, 'orderDetail'])->name('customer.order-detail');
+    Route::get('/my-change-password', [CustomerDashboardController::class, 'changePassword'])->name('customer.change-password');
 });
 
 

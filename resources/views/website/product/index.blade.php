@@ -157,7 +157,7 @@
                             <div class="product-info">
                                 <div>
                                     <h2 class="product-name" href="">{{ $product->name }}</h2>
-                                    <h3 class="product-price">${{ $product->selling_price }}&nbsp;<span><strike>${{ $product->regular_price }}</strike></span></h3>
+                                    <h3 class="product-price">${{ $product->selling_price }}&nbsp;<span style="color:rgb(176, 173, 173);"><strike>${{ $product->regular_price }}</strike></span></h3>
                                 </div>
                                 <div>
                                     <button class="cart-icon">
