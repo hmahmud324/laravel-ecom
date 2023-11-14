@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EcommerceController;
 use App\Http\Controllers\ProductController;
@@ -52,6 +53,11 @@ Route::middleware(['customer'])->group(function () {
     Route::get('/my-change-password', [CustomerDashboardController::class, 'changePassword'])->name('customer.change-password');
 });
 
+
+
+Route::get('/wishlist/index', [WishlistController::class, 'index'])->name('wishlist.index');
+Route::post('/wishlist/add', [WishlistController::class, 'addToWishlist'])->name('wishlist.add');
+Route::post('/wishlist/remove', [WishlistController::class, 'removeFromWishlist'])->name('wishlist.remove');
 
 
 

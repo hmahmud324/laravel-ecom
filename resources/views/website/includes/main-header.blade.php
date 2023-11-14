@@ -107,15 +107,19 @@
                                     <span>Cart</span>
                                     <span
                                         class="bg-dark-accents text-white rounded-full py-[3px] px-[9px] ml-1 inline-flex justify-center items-center text-[10px] leading-[100%]">
+                                        @if(Session::get('customer_id'))
                                         @if (count(Cart::content()) == 0)
                                             {{ 0 }}
                                         @else
                                             {{ count(Cart::content()) }}
                                         @endif
+                                        @else
+                                        {{ 0 }}
+                                        @endif
                                     </span>
                                 </a>
                                 <div class="cart-content">
-
+                                    @if (Session::get('customer_id'))
                                     <ul class="p-6">
                                         @php($sum = 0)
                                         @foreach (Cart::content() as $item)
@@ -163,8 +167,22 @@
                                             <a href="checkout-shopping.html" class="btn-primary">Checkout</a>
                                         </div>
                                     </ul>
+                                    @else
+                                    <ul class="p-6">
+                                            <li class="pb-4">
+                                            </li>
+                                        <div class="flex justify-between items-center py-2 mb-4">
+                                            <p class="text-[#636270] text-lg">
+                                               Products</p>
+                                            <p class="text-gray-black text-xl font-medium">${{ 0}}</p>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <a href="{{ route('cart.show') }}" class="btn-transparent">View Cart</a>
+                                            <a href="checkout-shopping.html" class="btn-primary">Checkout</a>
+                                        </div>
+                                    </ul>
+                                    @endif
                                 </div>
-
                             </li>
                             <li class="inline-flex items-center justify-center">
                                 <a href="#"
@@ -195,81 +213,70 @@
                                 </button>
                                 <div class="profile-content">
                                     <ul class="py-3">
-                                        @if (Session::get('customer_id'))
+                                        @if(Session::get('customer_id'))
+                                        <div class="px-3 shadow-[0px_1px_0px_#E1E3E6]">
+                                            <li>
+                                                <div class="px-3 shadow-[0px_1px_0px_#E1E3E6]" style="display: flex; align-items: center; padding-bottom:8px;">
+                                                    <span>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-circle" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                            <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+                                                            <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+                                                            <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855"></path>
+                                                         </svg>
+                                                    </span>&nbsp;
+                                                    <span>{{Session::get('customer_name')}}</span>
+                                                    <li>
+                                                      <a href="{{route('customer.dashboard')}}">Dashboard</a>
+                                                    </li>
+                                                </div>
+                                            </li>
                                             <div class="px-3 shadow-[0px_1px_0px_#E1E3E6]">
                                                 <li>
-                                                    <div class="px-3 shadow-[0px_1px_0px_#E1E3E6]"
-                                                        style="display: flex; align-items: center; padding-bottom:8px;">
-                                                        <span>
-                                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                                class="icon icon-tabler icon-tabler-user-circle"
-                                                                width="24" height="24" viewBox="0 0 24 24"
-                                                                stroke-width="2" stroke="currentColor" fill="none"
-                                                                stroke-linecap="round" stroke-linejoin="round">
-                                                                <path stroke="none" d="M0 0h24v24H0z" fill="none">
-                                                                </path>
-                                                                <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0">
-                                                                </path>
-                                                                <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0">
-                                                                </path>
-                                                                <path
-                                                                    d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855">
-                                                                </path>
-                                                            </svg>
-                                                        </span>&nbsp;
-                                                        <span>{{ Session::get('customer_name') }}</span>
-                                                    </div>
+                                                    <a href="account-setting.html">Account Settings</a>
                                                 </li>
-                                                <div class="px-3 shadow-[0px_1px_0px_#E1E3E6]">
-                                                    <li>
-                                                        <a href="{{ route('customer.dashboard') }}">Dashboard</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="account-setting.html">Account Settings</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="order-history.html">Order History</a>
-                                                    </li>
-                                                </div>
-                                                <div class="px-3 shadow-[0px_1px_0px_#E1E3E6]">
-                                                    <li>
-                                                        <a href="wishlist.html">Wishlist</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="shopping-cart.html">Shopping Cart</a>
-                                                    </li>
-                                                </div>
-                                                <div class="px-3">
-                                                    <li>
-                                                        <a href="{{ route('customer.logout') }}">Logout</a>
-                                                    </li>
-                                                </div>
-                                            @else
-                                                <div class="px-3 shadow-[0px_1px_0px_#E1E3E6]">
-                                                    <li>
-                                                        <a href="{{ route('customer.login') }}">Sign In</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="{{ route('customer.registration') }}">Create a
-                                                            Account</a>
-                                                    </li>
-                                                </div>
-                                                <div class="px-3 shadow-[0px_1px_0px_#E1E3E6]">
-                                                    <li>
-                                                        <a href="account-setting.html">Account Settings</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="order-history.html">Order History</a>
-                                                    </li>
-                                                </div>
-                                                <div class="px-3 shadow-[0px_1px_0px_#E1E3E6]">
-                                                    <li>
-                                                        <a href="wishlist.html">Wishlist</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="shopping-cart.html">Shopping Cart</a>
-                                                    </li>
-                                                </div>
+                                                <li>
+                                                    <a href="order-history.html">Order History</a>
+                                                </li>
+                                            </div>
+                                            <div class="px-3 shadow-[0px_1px_0px_#E1E3E6]">
+                                                <li>
+                                                    <a href="{{ route('wishlist.index') }}">Wishlist</a>
+                                                </li>
+                                                <li>
+                                                    <a href="shopping-cart.html">Shopping Cart</a>
+                                                </li>
+                                            </div>
+                                            <div class="px-3">
+                                                <li>
+                                                    <a href="{{route('customer.logout')}}">Logout</a>
+                                                </li>
+                                            </div>
+                                         @else
+                                         <div  class="px-3 shadow-[0px_1px_0px_#E1E3E6]">
+                                            <li>
+                                                <a href="{{ route('customer.login') }}">Sign In</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('customer.registration') }}">Create a Account</a>
+                                            </li>
+                                        </div>
+                                        <div class="px-3 shadow-[0px_1px_0px_#E1E3E6]">
+                                            <li>
+                                                <a href="account-setting.html">Account Settings</a>
+                                            </li>
+                                            <li>
+                                                <a href="order-history.html">Order History</a>
+                                            </li>
+                                        </div>
+                                        <div class="px-3 shadow-[0px_1px_0px_#E1E3E6]">
+                                            <li>
+                                                <a href="{{ route('wishlist.index') }}">Wishlist</a>
+                                            </li>
+                                            <li>
+                                                <a href="shopping-cart.html">Shopping Cart</a>
+                                            </li>
+                                        </div>
                                         @endif
                                     </ul>
                                 </div>

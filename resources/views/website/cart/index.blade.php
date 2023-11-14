@@ -25,9 +25,9 @@
         <!-- shoping cart List Start -->
         <div class="shopping-cart-wrapper pt-10 pb-20 flex lg:flex-nowrap flex-wrap items-start gap-6">
             <!-- shopping cart start -->
+            @if (Session::get('customer_id'))
             <div class="shopping-cart lg:w-2/3 w-full">
                 <div class="px-6 py-6 overflow-x-auto">
-                    
                     <table class="w-[824px] leading-normal">
                         <thead>
                             <tr>
@@ -141,6 +141,70 @@
                     <button class="mt-6 bg-accents hover:bg-[#272343] transition-all duration-300 py-[19px] rounded-lg text-[18px] font-bold font-display leading-[110%] text-gray-white text-center w-full">proceed to Checkout</button>
                 </div>
             </div>
+            @else
+            <div class="shopping-cart lg:w-2/3 w-full">
+                <div class="px-6 py-6 overflow-x-auto">
+                    <table class="w-[824px] leading-normal">
+                        <thead>
+                            <tr>
+                                <th class="pb-6 border-b border-[#E1E3E6] text-left text-xs font-semibold text-[#272343] uppercase tracking-wider w-[240px]">
+                                    Products
+                                </th>
+                                <th class="pb-6 border-b border-[#E1E3E6] text-left text-xs font-semibold text-[#272343] uppercase tracking-wider w-[104px]">
+                                    Unit Price
+                                </th>
+                                <th class="pb-6 border-b border-[#E1E3E6] text-left text-xs font-semibold text-[#272343] uppercase tracking-wider w-[164px]">
+                                    Quantity
+                                </th>
+                                <th class="pb-6 border-b border-[#E1E3E6] text-left text-xs font-semibold text-[#272343] uppercase tracking-wider w-[96px]">
+                                    Sub Total
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="cart-item">
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <hr class="my-0">
+                <div class="coupon-wrap p-6">
+                    <input type="text" name="" id="" class="px-5 py-[18px] bg-[#F0F2F3] rounded-lg border-none focus:outline-none coupon-input coupon-btn w-full block focus:ring-2 ring-[#029FAE]" placeholder="Coupon Code">
+                    <button type="submit" class="bg-[#007580] hover:bg-[#272343] transition-all duration-300 inline-flex font-semibold text-gray-white coupon-btn px-6 py-[17px] rounded-lg">Apply Coupon Code</button>
+                    <button class="bg-off-white text-[#272343] coupon-btn font-semibold py-[17px] px-6 rounded-lg">Update Cart</button>
+                </div>
+
+            </div>
+            <!-- shopping cart end -->
+            <!-- Cart Total End -->
+            <div class="cart-total p-8 lg:w-1/3 w-full">
+                <div class="subtotal-info">
+                    <div class="flex justify-between items-center">
+                        <p class="common-hedding">subtotal</p>
+                        <p class="text-gray-black text-[16px] leading-[120%] font-display font-medium">$</p>
+                    </div>
+                    <div class="flex justify-between items-center pt-4">
+                        <p class="common-hedding">shipping </p>
+                        <p class="text-gray-black text-[16px] leading-[120%] font-display font-medium">$</p>
+                    </div>
+                    <hr>
+                    <div class="flex justify-between items-center">
+                        <p class="common-hedding">Total:</p>
+                        <p class="text-gray-black text-[22px] leading-[120%] font-display font-semibold">$</p>
+                    </div>
+                    <div class="flex justify-between items-center pt-4">
+                        <p class="common-hedding">shipping </p>
+                        <p class="text-gray-black text-[16px] leading-[120%] font-display font-medium">$</p>
+                    </div>
+                    <hr>
+                    <div class="flex justify-between items-center">
+                        <p class="common-hedding">Total:</p>
+                        <p class="text-gray-black text-[22px] leading-[120%] font-display font-semibold">$</p>
+                    </div>
+                    <button class="mt-6 bg-accents hover:bg-[#272343] transition-all duration-300 py-[19px] rounded-lg text-[18px] font-bold font-display leading-[110%] text-gray-white text-center w-full">proceed to Checkout</button>
+                </div>
+            </div>
+            @endif
             <!-- Cart Total Start -->
         </div>
     </div>
