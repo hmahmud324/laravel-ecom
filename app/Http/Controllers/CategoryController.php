@@ -23,7 +23,7 @@ class CategoryController extends Controller
         ]);
 
         Category::newCategory($request);
-        return back()->with('message', 'Category info created successfully.');
+        return back()->with('success', 'Category info created successfully.');
     }
 
     public function manage()
@@ -43,7 +43,7 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         Category::updateCategory($request, $id);
-        return redirect('/category/manage/')->with('message', 'Category info updated successfully.');
+        return redirect('/category/manage/')->with('success', 'Category info updated successfully.');
     }
 
     public function delete($id)

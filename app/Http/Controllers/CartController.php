@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+
 use Cart;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -27,9 +28,9 @@ class CartController extends Controller
                     {
                         if (($this->product->stock_amount - $cartProduct->qty) == 0)
                         {
-                            return back()->with('message1', 'Sorry...you have purchased maximum amount');
+                            return back()->with('success', 'Sorry...you have purchased maximum amount');
                         }
-                        return back()->with('message1', sprintf('Sorry... you can purchase maximum %d amount', ($this->product->stock_amount - $cartProduct->qty)));
+                        return back()->with('success', sprintf('Sorry... you can purchase maximum %d amount', ($this->product->stock_amount - $cartProduct->qty)));
 
                     }
                 }
@@ -39,7 +40,7 @@ class CartController extends Controller
 
         if ($this->product->stock_amount < $request->qty)
         {
-            return back()->with('message1', sprintf('Sorry... you can purchase maximum %s amount', $this->product->stock_amount));
+            return back()->with('success', sprintf('Sorry... you can purchase maximum %s amount', $this->product->stock_amount));
         }
         Cart::add([
             'id'        => $id,
@@ -51,7 +52,7 @@ class CartController extends Controller
                 'category'  => $this->product->category->name,
                 'brand'     => $this->product->brand->name,
             ]]);
-        return redirect('/my-shopping-cart');
+        return redirect('/my-shopping-cart')->with('success','Product added to cart successfully.');
     }
 
     public function show()
@@ -66,16 +67,16 @@ class CartController extends Controller
         $this->product = Product::find($request->id);
         if ($this->product->stock_amount < $request->qty)
         {
-            return back()->with('message1', sprintf('Sorry... you can purchase maximum %s amount', $this->product->stock_amount));
+            return back()->with('success', sprintf('Sorry... you can purchase maximum %s amount', $this->product->stock_amount));
         }
         Cart::update($id, $request->qty);
-        return back()->with('message1', 'Cart product info updated successfully.');
+        return back()->with('success', 'Cart product info updated successfully.');
     }
 
     public function delete($id)
     {
         Cart::remove($id);
-        return back()->with('message1', 'Cart product info removed successfully.');
+        return back()->with('success', 'Cart product info removed successfully.');
     }
 
 }

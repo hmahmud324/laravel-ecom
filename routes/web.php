@@ -11,6 +11,7 @@ use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EcommerceController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\HeroSliderController;
 use App\Http\Controllers\CustomerAuthController;
 use App\Http\Controllers\CustomerDashboardController;
 
@@ -114,6 +115,16 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::post('/brand/update/{id}','update')->name('brand.update');
         Route::get('/brand/delete/{id}','delete')->name('brand.delete');
     });
+
+    //HeroSlider Routes
+    Route::controller(HeroSliderController::class)->group(function(){
+        Route::get('/hero-slider/add','index')->name('hero-slider.add');
+        Route::post('/hero-slider/new','create')->name('hero-slider.new');
+        Route::get('/hero-slider/manage','manage')->name('hero-slider.manage');
+        Route::get('/hero-slider/edit/{id}','edit')->name('hero-slider.edit');
+        Route::post('/hero-slider/update/{id}','update')->name('hero-slider.update');
+        Route::get('/hero-slider/delete/{id}','delete')->name('hero-slider.delete');
+     });
 
     Route::resource('product',ProductController::class);
     Route::get('/product/update-status/{id}', [ProductController::class, 'updateStatus'])->name('product.update-status');

@@ -94,6 +94,8 @@ class Product extends Model
         return $this->hasMany(OtherImage::class);
     }
 
+    
+
     public static function updateFeaturedStatus($id)
     {
         self::$product = Product::find($id);

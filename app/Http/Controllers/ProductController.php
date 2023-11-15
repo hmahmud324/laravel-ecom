@@ -38,7 +38,7 @@ class ProductController extends Controller
     {
         $this->product = Product::newProduct($request);
         OtherImage::newOtherImages($request->other_image,$this->product->id);
-        return back()->with('message', 'Product info created successfully.');
+        return back()->with('success', 'Product info created successfully.');
     }
 
     /**
@@ -59,11 +59,11 @@ class ProductController extends Controller
         return view('admin.product.edit', compact('product','categories','brands',));
     }
 
-    private $message;
+    private $success;
     public function updateStatus($id)
     {
-        $this->message = Product::updateFeaturedStatus($id);
-        return back()->with('message', $this->message);
+        $this->success = Product::updateFeaturedStatus($id);
+        return back()->with('success', $this->success);
     }
 
 
@@ -77,7 +77,7 @@ class ProductController extends Controller
         if ($request->other_image) {
             OtherImage::updateOtherImages($request,$product->id);
         }
-        return redirect('/product')->with('message', 'Product info updated successfully.');
+        return redirect('/product')->with('success', 'Product info updated successfully.');
 
     }
 
@@ -88,6 +88,6 @@ class ProductController extends Controller
     {
         Product::deleteProduct($product->id);
         OtherImage::deleteOtherImages($product->id);
-        return redirect('/product')->with('message', 'Product info deleted successfully.');
+        return redirect('/product')->with('success', 'Product info deleted successfully.');
     }
 }

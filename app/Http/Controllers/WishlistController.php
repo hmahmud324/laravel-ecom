@@ -15,18 +15,18 @@ class WishlistController extends Controller
     public function index(){
         return view('website.wishlist.index',[
             'categories'    => Category::all(),
-            'wishlistItem' => Wishlist::all()
+            'wishlistItem'  => Wishlist::all()
         ]);
     }
 
     public function addToWishlist(Request $request)
     {
         if (!Session::has('customer_id')) {
-            return redirect()->back()->with('error', 'Invalid customer.');
+            return redirect()->back()->with('error', 'Invalid customer.Please login to add to wishlist');
         }
 
-        $customerId = Session::get('customer_id');
-        $productId = $request->input('product_id');
+        $customerId   = Session::get('customer_id');
+        $productId    = $request->input('product_id');
 
         $existingWishlistItem = Wishlist::where('customer_id', $customerId)
         ->where('product_id', $productId)
@@ -39,8 +39,8 @@ class WishlistController extends Controller
 
     // Create a new wishlist item
     $wishlistItem = new Wishlist();
-    $wishlistItem->customer_id = $customerId;
-    $wishlistItem->product_id = $productId;
+    $wishlistItem->customer_id    = $customerId;
+    $wishlistItem->product_id     = $productId;
     $wishlistItem->save();
 
     return redirect()->route('wishlist.index')->with('success', 'Product added to the wishlist.');
@@ -50,11 +50,11 @@ class WishlistController extends Controller
     public function removeFromWishlist(Request $request)
     {
         if (!Session::has('customer_id')) {
-            return redirect()->back()->with('error', 'Invalid customer.');
+            return redirect()->back()->with('error', 'Invalid customer.Please login to add to wishlist');
         }
 
-        $customerId = Session::get('customer_id');
-        $productId = $request->input('product_id');
+        $customerId   = Session::get('customer_id');
+        $productId    = $request->input('product_id');
         // Find the wishlist item to be removed
         $wishlistItem = Wishlist::where('customer_id', $customerId)
         ->where('product_id', $productId)
@@ -71,16 +71,16 @@ class WishlistController extends Controller
         return redirect()->back()->with('success', 'Product removed from the wishlist.');
         }
 
-
+        private $customerId;
         public function addToCart(Request $request)
         {
             if (!Session::has('customer_id')) {
-                return redirect()->back()->with('error', 'Invalid customer.');
+                return redirect()->back()->with('error', 'Invalid customer.Please login to add to wishlist');
             }
 
-            $product     = Cart::content();
-            $productId   = Session::get('customer_id');
-            $customerId  = $request->input('customer_id');
+            $product      = Cart::content();
+            $customerId   = Session::get('customer_id');
+            $productId    = $request->input('product_id');
 
             // Perform validation and other necessary checks
             Cart::add([
@@ -96,4 +96,19 @@ class WishlistController extends Controller
             return redirect('/my-shopping-cart');
            
         }
+
+        public function showCount()
+        {
+            $customerId = Session::get('customer_id');
+            
+            if ($customerId) {
+                $wishlistCount = Wishlist::where('customer_id', $customerId)->count();
+            } else {
+                $wishlistCount = 0;
+            }
+
+            return view('website.includes.main-header', compact('wishlistCount'));
+        }
+                    
+
 }

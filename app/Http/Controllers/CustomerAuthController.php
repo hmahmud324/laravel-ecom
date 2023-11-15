@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use Cart;
 use Session;
 use App\Models\Customer;
 use App\Models\Category;

@@ -22,7 +22,7 @@ class CustomerMiddleware
         }
         else
         {
-            return redirect('/customer-login')->with('message', 'Please login first');
+            return redirect('/customer-login')->with('success', 'Please login first');
         }
     }
 }

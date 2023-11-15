@@ -9,3 +9,4 @@
 
 @stack('scripts')
 
+@stack('dashboard')
