@@ -10,3 +10,5 @@
 @stack('scripts')
 
 @stack('dashboard')
+
+@stack('image')

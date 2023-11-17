@@ -171,7 +171,7 @@ var swiper5 = new Swiper(".recentSwiper", {
 var swiper6 = new Swiper(".testimonialSwiper", {
     slidesPerView: 1,
     spaceBetween: 0,
-    loop: true,
+    // loop: true,
     navigation: {
         nextEl: ".testimonials-button-next",
         prevEl: ".testimonials-button-prev",

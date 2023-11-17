@@ -12,6 +12,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EcommerceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HeroSliderController;
+use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\CustomerAuthController;
 use App\Http\Controllers\CustomerDashboardController;
 
@@ -31,35 +32,45 @@ Route::controller(EcommerceController::class)->group(function (){
     Route::get('/product/index', 'product')->name('all-product');
     Route::get('/product/detail/{id}', 'detail')->name('product-detail');
 
-    Route::post('/add-to-cart/{id}', [CartController::class, 'index'])->name('cart.add');
-    Route::get('/my-shopping-cart', [CartController::class, 'show'])->name('cart.show');
-    Route::post('/update-shopping-cart/{id}', [CartController::class, 'update'])->name('cart.update');
-    Route::get('/delete-shopping-cart/{id}', [CartController::class, 'delete'])->name('cart.delete');
+    Route::controller(CartController::class)->group(function(){
+        Route::post('/add-to-cart/{id}', 'index')->name('cart.add');
+        Route::get('/my-shopping-cart', 'show')->name('cart.show');
+        Route::post('/update-shopping-cart/{id}', 'update')->name('cart.update');
+        Route::get('/delete-shopping-cart/{id}', 'delete')->name('cart.delete');
+    });
 
 });
 
 
-Route::get('/customer-registration', [CustomerAuthController::class, 'registration'])->name('customer.registration');
-Route::post('/customer-registration', [CustomerAuthController::class, 'newRegistration'])->name('customer.registration');
-Route::get('/customer-login', [CustomerAuthController::class, 'login'])->name('customer.login');
-Route::post('/customer-login', [CustomerAuthController::class, 'loginCheck'])->name('customer.login');
-Route::get('/customer-logout', [CustomerAuthController::class, 'logout'])->name('customer.logout');
+    Route::controller(CustomerAuthController::class)->group(function(){
+        Route::get('/customer-registration', 'registration')->name('customer.registration');
+        Route::post('/customer-registration', 'newRegistration')->name('customer.registration');
+        Route::get('/customer-login', 'login')->name('customer.login');
+        Route::post('/customer-login', 'loginCheck')->name('customer.login');
+        Route::get('/customer-logout', 'logout')->name('customer.logout');
+
+    });
+
 
 
 Route::middleware(['customer'])->group(function () {
-    Route::get('/my-dashboard', [CustomerDashboardController::class, 'index'])->name('customer.dashboard');
-    Route::get('/my-profile', [CustomerDashboardController::class, 'profile'])->name('customer.profile');
-    Route::get('/my-order', [CustomerDashboardController::class, 'order'])->name('customer.order');
-    Route::get('/my-order-detail', [CustomerDashboardController::class, 'orderDetail'])->name('customer.order-detail');
-    Route::get('/my-change-password', [CustomerDashboardController::class, 'changePassword'])->name('customer.change-password');
+   Route::controller(CustomerDashboardController::class)->group(function(){
+        Route::get('/my-dashboard', 'index')->name('customer.dashboard');
+        Route::get('/my-profile', 'profile')->name('customer.profile');
+        Route::post('/update-my-profile', 'updateProfile')->name('customer.update-profile');
+        Route::post('/update-profile-image', 'updateImage')->name('update-profile-Image');
+        Route::get('/my-order', 'order')->name('customer.order');
+        Route::get('/my-order-detail', 'orderDetail')->name('customer.order-detail');
+   });
 });
 
 
 
-Route::get('/wishlist/index', [WishlistController::class, 'index'])->name('wishlist.index');
-Route::post('/wishlist/add', [WishlistController::class, 'addToWishlist'])->name('wishlist.add');
-Route::post('/wishlist/remove', [WishlistController::class, 'removeFromWishlist'])->name('wishlist.remove');
-
+    Route::controller(WishlistController::class)->group(function(){
+        Route::get('/wishlist/index', 'index')->name('wishlist.index');
+        Route::post('/wishlist/add', 'addToWishlist')->name('wishlist.add');
+        Route::post('/wishlist/remove', 'removeFromWishlist')->name('wishlist.remove');
+    });
 
 
 Route::get('/dashboard', function () {
@@ -124,6 +135,17 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::get('/hero-slider/edit/{id}','edit')->name('hero-slider.edit');
         Route::post('/hero-slider/update/{id}','update')->name('hero-slider.update');
         Route::get('/hero-slider/delete/{id}','delete')->name('hero-slider.delete');
+     });
+     
+     
+     //Testimonial Routes
+    Route::controller(TestimonialController::class)->group(function(){
+        Route::get('/testimonial/add','index')->name('testimonial.add');
+        Route::post('/testimonial/new','create')->name('testimonial.new');
+        Route::get('/testimonial/manage','manage')->name('testimonial.manage');
+        Route::get('/testimonial/edit/{id}','edit')->name('testimonial.edit');
+        Route::post('/testimonial/update/{id}','update')->name('testimonial.update');
+        Route::get('/testimonial/delete/{id}','delete')->name('testimonial.delete');
      });
 
     Route::resource('product',ProductController::class);

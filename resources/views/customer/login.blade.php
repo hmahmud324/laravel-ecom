@@ -35,7 +35,7 @@
                 <form action="{{route('customer.login')}}" method="POST">
                     @csrf
                     <div class="mb-4">
-                        <input type="number" placeholder="Mobile" name="mobile" class="input-box focus:outline-none focus:ring-2 focus:ring-accents font-display transition duration-300 ease-in-out" required/>
+                        <input type="text" placeholder="Mobile" name="mobile" class="input-box focus:outline-none focus:ring-2 focus:ring-accents font-display transition duration-300 ease-in-out" required/>
                     </div>
                     <div class="relative">
                         <input type="password" placeholder="Password" class="form_password focus:outline-none focus:ring-2 focus:ring-accents font-display transition duration-300 ease-in-out" id="myInput" name="password" required/>

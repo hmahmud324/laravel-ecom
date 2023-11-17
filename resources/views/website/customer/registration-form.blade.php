@@ -42,7 +42,7 @@
                         class="input-box focus:outline-none focus:ring-2 focus:ring-accents font-display transition duration-300 ease-in-out">
                 </div>
                 <div class="mb-4">
-                    <input type="number" placeholder="Mobile" name="mobile"
+                    <input type="text" placeholder="Mobile" name="mobile"
                         class="input-box focus:outline-none focus:ring-2 focus:ring-accents font-display transition duration-300 ease-in-out">
                 </div>
                 <div class="relative">

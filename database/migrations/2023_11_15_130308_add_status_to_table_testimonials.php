@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('testimonials', function (Blueprint $table) {
-            $table->id();
-            $table->text('text');
-            $table->string('author_name');
-            $table->string('author_role');
-            $table->text('image');
-            $table->timestamps();
+        Schema::table('testimonials', function (Blueprint $table) {
+            $table->tinyInteger('status')->default(1);
         });
     }
 
@@ -26,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('testimonials');
+        Schema::table('testimonials', function (Blueprint $table) {
+            $table->tinyInteger('status')->default(1);
+        });
     }
 };

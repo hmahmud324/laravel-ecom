@@ -9,3 +9,14 @@
     <link rel="stylesheet" href="{{ asset('/') }}website/css/tailwind.css">
     <link rel="stylesheet" href="{{ asset('/') }}website/css/styles.css">
     <link rel="stylesheet" href="{{ asset('/') }}website/css/responsive.css">
+
+
+    <style>
+      #account_settings {
+    width: 100%;
+}
+
+#account_settings .container {
+    max-width: 100%;
+}
+    </style>

@@ -188,8 +188,13 @@
                                     <span class="text-white text-base">Add To Cart</span>
                                 </button>
                             </div>
+                        </form>
                             <div>
-                                <button
+                                <form action="{{ route('wishlist.add') }}" method="POST" style="display: inline;">
+                                    @csrf
+                                    <input type="hidden" name="customer_id" value="{{ session('customer_id') }}">
+                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                    <button type="submit"
                                     class="h-[52px] w-[52px] border border-[#D6D9DD] rounded-lg inline-flex justify-center items-center">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -203,10 +208,10 @@
                                             stroke-linejoin="round" />
                                     </svg>
                                 </button>
+                                </form>
                             </div>
                         </div>
                     </div>
-                </form>
                     <div class="flex gap-2.5 items-center">
                         <p>Share on</p>
                         <ul class="m-0 p-0 flex gap-1">
