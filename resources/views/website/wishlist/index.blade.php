@@ -40,39 +40,39 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($wishlistItem as $item)
+                        @foreach ($wishlistItems as $wishlistItem)
                             <tr>
                                 <td class="py-6 text-sm">
                                     <div class="flex gap-2 items-center">
                                         <form action="{{ route('wishlist.remove') }}" method="POST">
                                             @csrf
                                             <input type="hidden" name="customer_id" value="{{ session('customer_id') }}">
-                                            <input type="hidden" name="product_id" value="{{ $item->product->id }}">
+                                            <input type="hidden" name="product_id" value="{{ $wishlistItem->product->id }}">
                                             <button  type="submit" class="p-2">
                                                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M2 2L6.00003 6M6.00003 6L10 2M6.00003 6L2 10M6.00003 6L10 10" stroke="#9A9CAA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                                 </svg>
                                             </button>
                                         </form>
-                                        <a href="{{ route('product-detail', ['id' => $item->product->id]) }}" class="w-[70px] h-[70px]">
-                                            <img class="w-full h-full rounded-lg" src="{{ asset($item->product->image) }}" alt="{{ $item->product->name }}" />
+                                        <a href="{{ route('product-detail', ['id' => $wishlistItem->product->id]) }}" class="w-[70px] h-[70px]">
+                                            <img class="w-full h-full rounded-lg" src="{{ asset($wishlistItem->product->image) }}" alt="{{ $wishlistItem->product->name }}" />
                                         </a>
-                                        <a href="{{ route('product-detail', ['id' => $item->product->id]) }}" class="ml-1">
-                                            <p class="mb-0 text-[#272343] text-sm">{{ $item->product->name }}</p>
+                                        <a href="{{ route('product-detail', ['id' => $wishlistItem->product->id]) }}" class="ml-1">
+                                            <p class="mb-0 text-[#272343] text-sm">{{ $wishlistItem->product->name }}</p>
                                         </a>
                                     </div>
                                 </td>
                                 <td class="py-6 text-sm">
-                                    <p class="mb-0">$ {{ $item->product->selling_price }}</p>
+                                    <p class="mb-0">$ {{ $wishlistItem->product->selling_price }}</p>
                                 </td>
                                 <td class="py-6 text-sm">
-                                    @if($item->product->stock_amount > 0)
+                                    @if($wishlistItem->product->stock_amount > 0)
                                     <p class="text-[#01AD5A] font-semibold">In Stock</p>
                                     @else
                                     <p class="text-[red] font-semibold">Out of Stock</p>
                                     @endif
                                 </td>
-                                <form action="{{ route('cart.add',['id' =>$item->product->id]) }}" method="POST">
+                                <form action="{{ route('cart.add',['id' =>$wishlistItem->product->id]) }}" method="POST">
                                     @csrf
                                     <input type="hidden" value="1" name="qty"/>
                                 <td class="py-6 text-sm text-right">

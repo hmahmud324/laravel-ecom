@@ -5,6 +5,8 @@
   <script src="{{ asset('/') }}website/assets/plugins/js/mixitUp.js"></script>
   <script src="{{ asset('/') }}website/js/app.js"></script>
 
+  
+
  @stack('script')
 
 @stack('scripts')

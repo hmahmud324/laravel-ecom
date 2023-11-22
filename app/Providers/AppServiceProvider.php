@@ -30,5 +30,9 @@ class AppServiceProvider extends ServiceProvider
                 $wishlistCount = $customerId ? Wishlist::where('customer_id', $customerId)->count() : 0;
                 $view->with('wishlistCount', $wishlistCount);
             });
+
+            View::composer('website.master', function ($view) {
+                $view->with('categories', Category::all());
+            });
     }
 }

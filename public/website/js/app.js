@@ -96,7 +96,7 @@ var swiper3 = new Swiper(".topCategoriesSwiper", {
     slidesPerView: 1,
     spaceBetween: 12,
     centeredSlides: true,
-    loop: true,
+    // loop: true,
     navigation: {
         nextEl: ".categoriesSwiper-button-next",
         prevEl: ".categoriesSwiper-button-prev",

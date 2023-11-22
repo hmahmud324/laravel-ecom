@@ -14,7 +14,7 @@ class Category extends Model
 
     public static function imageUpload($request)
     {
-        self::$image = $request->file('image');
+        self::$image     = $request->file('image');
         self::$imageName = self::$image->getClientOriginalName();
         self::$directory = 'uploads/category-images/';
         self::$image->move(self::$directory, self::$imageName);
@@ -60,6 +60,11 @@ class Category extends Model
             unlink(self::$category->image);
         }
         self::$category->delete();
+    }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'category_id');
     }
 
 }

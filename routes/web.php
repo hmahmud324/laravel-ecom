@@ -9,13 +9,17 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\EcommerceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HeroSliderController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\CustomerAuthController;
+use App\Http\Controllers\AdminOrderController;
+use App\Http\Controllers\PaypalController;
+use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\CustomerDashboardController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,6 +35,9 @@ Route::controller(EcommerceController::class)->group(function (){
     Route::get('/', 'index')->name('home');
     Route::get('/product/index', 'product')->name('all-product');
     Route::get('/product/detail/{id}', 'detail')->name('product-detail');
+    Route::get('/search/index', 'search')->name('search.index');
+    Route::get('/order-history', 'history')->name('order-history');
+
 
     Route::controller(CartController::class)->group(function(){
         Route::post('/add-to-cart/{id}', 'index')->name('cart.add');
@@ -38,6 +45,9 @@ Route::controller(EcommerceController::class)->group(function (){
         Route::post('/update-shopping-cart/{id}', 'update')->name('cart.update');
         Route::get('/delete-shopping-cart/{id}', 'delete')->name('cart.delete');
     });
+
+
+    Route::post('subscribe-newsletter','subscribeNewsletter')->name('subscribe-newsletter');
 
 });
 
@@ -52,6 +62,13 @@ Route::controller(EcommerceController::class)->group(function (){
     });
 
 
+    Route::controller(CheckoutController::class)->group(function(){
+        Route::get('/checkout','index')->name('checkout');
+        Route::post('/new-order','newOrder')->name('order.new');
+        Route::get('/complete-order','orderComplete')->name('order.complete');
+    });
+
+
 
 Route::middleware(['customer'])->group(function () {
    Route::controller(CustomerDashboardController::class)->group(function(){
@@ -59,8 +76,9 @@ Route::middleware(['customer'])->group(function () {
         Route::get('/my-profile', 'profile')->name('customer.profile');
         Route::post('/update-my-profile', 'updateProfile')->name('customer.update-profile');
         Route::post('/update-profile-image', 'updateImage')->name('update-profile-Image');
-        Route::get('/my-order', 'order')->name('customer.order');
+        Route::get('/my-order-history', 'orderHistory')->name('customer.order-history');
         Route::get('/my-order-detail', 'orderDetail')->name('customer.order-detail');
+        Route::get('/my-wishlist', 'wishlist')->name('customer.wishlist');
    });
 });
 
@@ -71,6 +89,15 @@ Route::middleware(['customer'])->group(function () {
         Route::post('/wishlist/add', 'addToWishlist')->name('wishlist.add');
         Route::post('/wishlist/remove', 'removeFromWishlist')->name('wishlist.remove');
     });
+    
+    Route::controller(PaypalController::class)->group(function(){
+        Route::get('/paypal/payment', 'payment')->name('paypal.payment');
+        Route::get('/paypal/success', 'success')->name('paypal.success');
+        Route::get('/paypal/cancel', 'cancel')->name('paypal.cancel');
+       
+    });
+
+
 
 
 Route::get('/dashboard', function () {
@@ -147,6 +174,26 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::post('/testimonial/update/{id}','update')->name('testimonial.update');
         Route::get('/testimonial/delete/{id}','delete')->name('testimonial.delete');
      });
+
+
+     Route::controller(AdminOrderController::class)->group(function(){
+        Route::get('/admin/all-order', 'index')->name('admin.all-order');
+        Route::get('/admin/order-detail/{id}', 'detail')->name('admin.order-detail');
+        Route::get('/admin/order-edit/{id}', 'edit')->name('admin.order-edit');
+        Route::post('/admin/order-update/{id}', 'update')->name('admin.order-update');
+        Route::get('/admin/order-invoice/{id}', 'invoice')->name('admin.order-invoice');
+        Route::get('/admin/download-order-invoice/{id}', 'downloadInvoice')->name('admin.download-order-invoice');
+        Route::get('/admin/order-delete/{id}', 'delete')->name('admin.order-delete');
+     });
+
+
+     Route::controller(NewsletterController::class)->group(function (){
+        Route::get('/subscriber/index',  'index')->name('subscriber.index');
+        Route::post('/subscriber/store',  'store')->name('subscriber.store');
+        Route::get('/subscriber/delete/{id}',  'delete')->name('subscriber.delete');
+        
+    });
+     
 
     Route::resource('product',ProductController::class);
     Route::get('/product/update-status/{id}', [ProductController::class, 'updateStatus'])->name('product.update-status');

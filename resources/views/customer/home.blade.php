@@ -29,27 +29,12 @@
                 <!-- Tabs -->
                 <ul id="tabs" class="inline-flex flex-col md:flex-row w-full">
 
-                    <li class="border-b-2 border-accents">
-                        <a id="default-tab" href="#account_settings" class="text-[#636270] font-medium p-5 border-b border-transparent hover:text-gray-black font-display">Account Settings</a>
-                    </li>
-
-                    <li>
-                        <a href="#order_history" class="text-[#636270] font-medium p-5 border-b border-transparent hover:text-gray-black font-display">Order History</a>
-                    </li>
-                    
-                    <li>
-                        <a href="#order_details" class="text-[#636270] font-medium p-5 border-b border-transparent hover:text-gray-black">Order Details</a>
-                    </li>
-
-                    <li>
-                        <a href="#wishlist" class="text-[#636270] font-medium p-5 border-b border-transparent hover:text-gray-black font-display">Wishlist</a>
-                    </li>
+                 @include('customer.my-menu')
                 </ul>
-                <a href="#" class="font-display text-[16px] leading-[110%] font-medium capitalize text-[#636270] px-4 py-4 md:px-0">Logout</a>
+                <a href="{{route('customer.logout')}}" class="font-display text-[16px] leading-[110%] font-medium capitalize text-[#636270] px-4 py-4 md:px-0">Logout</a>
             </div>
         </div>
     </div>
-
     <div class="container">
         <!-- Tab Contents -->
         <div id="tab-contents">
@@ -153,11 +138,11 @@
             <!-- Account Setting End -->
 
 
-            @include('customer.includes.order-history')
+            @include('customer.order-history')
 
-            @include('customer.includes.order-details')
+            @include('customer.order-detail')
 
-            @include('customer.includes.wishlist')
+            @include('customer.wishlist')
 
         </div>
     </div>

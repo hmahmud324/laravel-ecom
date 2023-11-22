@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{ asset('/') }}website/css/responsive.css">
 
 
-    <style>
+<style>
       #account_settings {
     width: 100%;
 }
@@ -19,4 +19,9 @@
 #account_settings .container {
     max-width: 100%;
 }
-    </style>
+</style>
+
+
+
+
+@stack('styles')

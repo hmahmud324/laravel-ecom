@@ -24,76 +24,24 @@
         </div>
         <div class="swiper topCategoriesSwiper mx-3 md:mx-0">
             <div class="swiper-wrapper">
+                @foreach($categories as $category)
                 <div class="swiper-slide">
                     <div class="product-card-02">
                         <div class="product-thumb">
                             <a href="products.html"><img
-                                    src="{{ asset('/') }}website/assets/images/all-img/t-product-01.png"
-                                    alt=""></a>
+                                    src="{{ asset($category->image)}}"
+                                    alt="" style="height:424px; width:424px;"></a>
                         </div>
-
                         <div class="product-info">
-                            <h2><a href="#">Wing Chair</a></h2>
-                            <p>3,584 Products</p>
+                            <h2><a href="#">{{$category->name}}</a></h2>
+                            @php
+                            $productCount = $category->products->where('category_id', $category->id)->count();
+                            @endphp
+                            <p>{{$productCount}} Products</p>
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide">
-                    <div class="product-card-02">
-                        <div class="product-thumb">
-                            <a href="products.html"><img
-                                    src="{{ asset('/') }}website/assets/images/all-img/t-product-02.png"
-                                    alt=""></a>
-                        </div>
-
-                        <div class="product-info">
-                            <h2><a href="#">Wing Chair</a></h2>
-                            <p>3,584 Products</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="product-card-02">
-                        <div class="product-thumb">
-                            <a href="products.html"><img
-                                    src="{{ asset('/') }}website/assets/images/all-img/t-product-03.png"
-                                    alt=""></a>
-                        </div>
-
-                        <div class="product-info">
-                            <h2><a href="#">Wing Chair</a></h2>
-                            <p>3,584 Products</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="product-card-02">
-                        <div class="product-thumb">
-                            <a href="products.html"><img
-                                    src="{{ asset('/') }}website/assets/images/all-img/t-product-02.png"
-                                    alt=""></a>
-                        </div>
-
-                        <div class="product-info">
-                            <h2><a href="#">Wing Chair</a></h2>
-                            <p>3,584 Products</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="product-card-02">
-                        <div class="product-thumb">
-                            <a href="products.html"><img
-                                    src="{{ asset('/') }}website/assets/images/all-img/t-product-03.png"
-                                    alt=""></a>
-                        </div>
-
-                        <div class="product-info">
-                            <h2><a href="#">Wing Chair</a></h2>
-                            <p>3,584 Products</p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

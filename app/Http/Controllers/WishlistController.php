@@ -14,8 +14,8 @@ class WishlistController extends Controller
 
     public function index(){
         return view('website.wishlist.index',[
-            'categories'    => Category::all(),
-            'wishlistItem'  => Wishlist::all()
+            'categories'     => Category::all(),
+            'wishlistItems'  => Wishlist::all()
         ]);
     }
 
@@ -55,17 +55,16 @@ class WishlistController extends Controller
 
         $customerId   = Session::get('customer_id');
         $productId    = $request->input('product_id');
-        // Find the wishlist item to be removed
+      
         $wishlistItem = Wishlist::where('customer_id', $customerId)
         ->where('product_id', $productId)
         ->first();
 
         if (!$wishlistItem) {
-        // Wishlist item not found
         return redirect()->back()->with('error', 'Product not found in the wishlist.');
         }
 
-        // Delete the wishlist item
+     
         $wishlistItem->delete();
 
         return redirect()->back()->with('success', 'Product removed from the wishlist.');
@@ -79,10 +78,9 @@ class WishlistController extends Controller
             }
 
             $product      = Cart::content();
-            $customerId   = Session::get('customer_id');
             $productId    = $request->input('product_id');
 
-            // Perform validation and other necessary checks
+            
             Cart::add([
                 'id'        => $productId,
                 'name'      => $product->name,

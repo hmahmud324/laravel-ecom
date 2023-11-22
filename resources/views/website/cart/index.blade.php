@@ -137,7 +137,7 @@
                         <p class="text-gray-black text-[22px] leading-[120%] font-display font-semibold">${{ number_format($totalBill) }}</p>
                     </div>
                     @endif
-                    <button class="mt-6 bg-accents hover:bg-[#272343] transition-all duration-300 py-[19px] rounded-lg text-[18px] font-bold font-display leading-[110%] text-gray-white text-center w-full">proceed to Checkout</button>
+                    <a href="{{ route('checkout') }}" class="mt-6 bg-accents hover:bg-[#272343] transition-all duration-300 py-[19px] rounded-lg text-[18px] font-bold font-display leading-[110%] text-gray-white text-center w-full">Proceed to Checkout</a>
                 </div>
             </div>
             <!-- Cart Total Start -->

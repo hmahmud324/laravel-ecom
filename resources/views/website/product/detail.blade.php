@@ -216,8 +216,8 @@
                         <p>Share on</p>
                         <ul class="m-0 p-0 flex gap-1">
                             <li>
-                                <a href="#"
-                                    class="p-[11px] inline-flex justify-center items-center text-[#636270] hover:text-[#029FAE] border hover:border-[#029FAE] border-transparent rounded-full transition-all duration-500">
+                                <a href="https://www.facebook.com/sharer/sharer.php?u={{url()->current()}}" target="_blank" data-social="facebook"
+                                    class="share-button p-[11px] inline-flex justify-center items-center text-[#636270] hover:text-[#029FAE] border hover:border-[#029FAE] border-transparent rounded-full transition-all duration-500">
                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <g clip-path="url(#clip0_248_4233)">
@@ -234,7 +234,8 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="https://twitter.com/intent/tweet?text={{$product->title}}&url={{url()->current()}}
+                                    " target="_blank"
                                     class="p-[11px] inline-flex justify-center items-center text-[#636270] hover:text-[#029FAE] border hover:border-[#029FAE] border-transparent rounded-full transition-all duration-500">
                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -252,24 +253,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#"
-                                    class="p-[11px] inline-flex justify-center items-center text-[#636270] hover:text-[#029FAE] border hover:border-[#029FAE] border-transparent rounded-full transition-all duration-500">
-                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M10.667 4.66667C10.667 4.48986 10.7372 4.32029 10.8623 4.19526C10.9873 4.07024 11.1568 4 11.3337 4C11.5105 4 11.68 4.07024 11.8051 4.19526C11.9301 4.32029 12.0003 4.48986 12.0003 4.66667C12.0003 4.84348 11.9301 5.01305 11.8051 5.13807C11.68 5.2631 11.5105 5.33333 11.3337 5.33333C11.1568 5.33333 10.9873 5.2631 10.8623 5.13807C10.7372 5.01305 10.667 4.84348 10.667 4.66667Z"
-                                            fill="currentColor" />
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M8.00016 4.83331C7.16031 4.83331 6.35486 5.16694 5.76099 5.76081C5.16713 6.35467 4.8335 7.16013 4.8335 7.99998C4.8335 8.83983 5.16713 9.64529 5.76099 10.2392C6.35486 10.833 7.16031 11.1666 8.00016 11.1666C8.84001 11.1666 9.64547 10.833 10.2393 10.2392C10.8332 9.64529 11.1668 8.83983 11.1668 7.99998C11.1668 7.16013 10.8332 6.35467 10.2393 5.76081C9.64547 5.16694 8.84001 4.83331 8.00016 4.83331ZM5.8335 7.99998C5.8335 7.42534 6.06177 6.87424 6.4681 6.46792C6.87443 6.06159 7.42553 5.83331 8.00016 5.83331C8.5748 5.83331 9.1259 6.06159 9.53223 6.46792C9.93856 6.87424 10.1668 7.42534 10.1668 7.99998C10.1668 8.57462 9.93856 9.12572 9.53223 9.53204C9.1259 9.93837 8.5748 10.1666 8.00016 10.1666C7.42553 10.1666 6.87443 9.93837 6.4681 9.53204C6.06177 9.12572 5.8335 8.57462 5.8335 7.99998Z"
-                                            fill="currentColor" />
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M11.5055 1.88865C9.17578 1.63038 6.82462 1.63038 4.49487 1.88865C3.15353 2.03865 2.0702 3.09532 1.91287 4.44332C1.63647 6.80637 1.63647 9.19359 1.91287 11.5566C2.0702 12.9046 3.15287 13.9613 4.49487 14.1113C6.80553 14.3693 9.19487 14.3693 11.5055 14.1113C12.8469 13.9613 13.9302 12.9046 14.0875 11.5566C14.364 9.19359 14.364 6.80637 14.0875 4.44332C13.9302 3.09532 12.8475 2.03865 11.5055 1.88865ZM4.60553 2.88198C6.86174 2.6319 9.13866 2.6319 11.3949 2.88198C12.2815 2.98198 12.9915 3.68132 13.0949 4.55998C13.3622 6.84553 13.3622 9.15444 13.0949 11.44C12.9915 12.3186 12.2815 13.0186 11.3949 13.1173C9.13866 13.3674 6.86173 13.3674 4.60553 13.1173C3.71887 13.0186 3.00887 12.3186 2.90553 11.44C2.63823 9.15444 2.63823 6.84553 2.90553 4.55998C3.00887 3.68132 3.71887 2.98132 4.60553 2.88265V2.88198Z"
-                                            fill="currentColor" />
-                                    </svg>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#"
+                                <a href="https://www.pinterest.com/pin/create/button/?url={{url()->current()}}" target="_blank"
                                     class="p-[11px] inline-flex justify-center items-center text-[#636270] hover:text-[#029FAE] border hover:border-[#029FAE] border-transparent rounded-full transition-all duration-500">
                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -287,7 +271,32 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="https://www.instagram.com/?url={{url()->current()}}" target="_blank"
+                                    class="p-[11px] inline-flex justify-center items-center text-[#636270] hover:text-[#029FAE] border hover:border-[#029FAE] border-transparent rounded-full transition-all duration-500">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M10.667 4.66667C10.667 4.48986 10.7372 4.32029 10.8623 4.19526C10.9873 4.07024 11.1568 4 11.3337 4C11.5105 4 11.68 4.07024 11.8051 4.19526C11.9301 4.32029 12.0003 4.48986 12.0003 4.66667C12.0003 4.84348 11.9301 5.01305 11.8051 5.13807C11.68 5.2631 11.5105 5.33333 11.3337 5.33333C11.1568 5.33333 10.9873 5.2631 10.8623 5.13807C10.7372 5.01305 10.667 4.84348 10.667 4.66667Z"
+                                            fill="currentColor" />
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M8.00016 4.83331C7.16031 4.83331 6.35486 5.16694 5.76099 5.76081C5.16713 6.35467 4.8335 7.16013 4.8335 7.99998C4.8335 8.83983 5.16713 9.64529 5.76099 10.2392C6.35486 10.833 7.16031 11.1666 8.00016 11.1666C8.84001 11.1666 9.64547 10.833 10.2393 10.2392C10.8332 9.64529 11.1668 8.83983 11.1668 7.99998C11.1668 7.16013 10.8332 6.35467 10.2393 5.76081C9.64547 5.16694 8.84001 4.83331 8.00016 4.83331ZM5.8335 7.99998C5.8335 7.42534 6.06177 6.87424 6.4681 6.46792C6.87443 6.06159 7.42553 5.83331 8.00016 5.83331C8.5748 5.83331 9.1259 6.06159 9.53223 6.46792C9.93856 6.87424 10.1668 7.42534 10.1668 7.99998C10.1668 8.57462 9.93856 9.12572 9.53223 9.53204C9.1259 9.93837 8.5748 10.1666 8.00016 10.1666C7.42553 10.1666 6.87443 9.93837 6.4681 9.53204C6.06177 9.12572 5.8335 8.57462 5.8335 7.99998Z"
+                                            fill="currentColor" />
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M11.5055 1.88865C9.17578 1.63038 6.82462 1.63038 4.49487 1.88865C3.15353 2.03865 2.0702 3.09532 1.91287 4.44332C1.63647 6.80637 1.63647 9.19359 1.91287 11.5566C2.0702 12.9046 3.15287 13.9613 4.49487 14.1113C6.80553 14.3693 9.19487 14.3693 11.5055 14.1113C12.8469 13.9613 13.9302 12.9046 14.0875 11.5566C14.364 9.19359 14.364 6.80637 14.0875 4.44332C13.9302 3.09532 12.8475 2.03865 11.5055 1.88865ZM4.60553 2.88198C6.86174 2.6319 9.13866 2.6319 11.3949 2.88198C12.2815 2.98198 12.9915 3.68132 13.0949 4.55998C13.3622 6.84553 13.3622 9.15444 13.0949 11.44C12.9915 12.3186 12.2815 13.0186 11.3949 13.1173C9.13866 13.3674 6.86173 13.3674 4.60553 13.1173C3.71887 13.0186 3.00887 12.3186 2.90553 11.44C2.63823 9.15444 2.63823 6.84553 2.90553 4.55998C3.00887 3.68132 3.71887 2.98132 4.60553 2.88265V2.88198Z"
+                                            fill="currentColor" />
+                                    </svg>
+                                </a>
+                            </li>
+                            <li>
+                                <a href=" https://www.linkedin.com/shareArticle?mini=true&url={{url()->current()}}&title={{$product->title}}" target="_blank"
+                                    class="p-[11px] inline-flex justify-center items-center text-[#636270] hover:text-[#029FAE] border hover:border-[#029FAE] border-transparent rounded-full transition-all duration-500">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
+                                        <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401m-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4"/>
+                                      </svg>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.youtube.com/share?url={{url()->current()}}" target="_blank"
                                     class="p-[11px] inline-flex justify-center items-center text-[#636270] hover:text-[#029FAE] border hover:border-[#029FAE] border-transparent rounded-full transition-all duration-500">
                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -307,6 +316,7 @@
         </div>
     </div>
     <!-- product details section end -->
+
 
     <!-- product list section start-->
     <section class="xl:py-20 py-6 md:py-10">

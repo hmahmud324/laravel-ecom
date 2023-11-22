@@ -47,7 +47,7 @@ class AdminController extends Controller
 
         // Validation (adjust rules as needed)
         $request->validate([
-            'name' => 'required',
+            'name'  => 'required',
             'email' => 'required|email',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust image rules
         ]);
@@ -78,10 +78,10 @@ class AdminController extends Controller
     {
         $request->validate([
             'current_password' => 'required',
-            'password' => 'required|confirmed'
+            'password'         => 'required|confirmed'
         ], [
                 'current_password|required' => 'Current Password Field is required',
-                'password|required' => 'Password field is required',
+                'password|required'         => 'Password field is required',
             ]
         );
 

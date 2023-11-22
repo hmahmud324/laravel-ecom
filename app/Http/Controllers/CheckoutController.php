@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\Category;
 use Cart;
 use Session;
 use App\Models\Order;
@@ -30,6 +30,7 @@ class CheckoutController extends Controller
         return view('website.checkout.index',[
             'cart_products'     =>  Cart::content(),
             'customer'          =>  $this->customer,
+            'categories'        =>  Category::all(),
         ]);
     }
 
@@ -61,6 +62,7 @@ class CheckoutController extends Controller
 
         }
 
+       
         $this->order = new Order();
         $this->order->customer_id       = $this->customer->id;
         $this->order->order_total       = Session::get('order_total');
@@ -74,12 +76,12 @@ class CheckoutController extends Controller
         foreach (Cart::content() as $item)
         {
             $this->orderDetail = new OrderDetail();
-            $this->orderDetail->order_id = $this->order->id;
-            $this->orderDetail->product_id = $item->id;
-            $this->orderDetail->product_name = $item->name;
-            $this->orderDetail->product_image = $item->options->image;
-            $this->orderDetail->product_price = $item->price;
-            $this->orderDetail->product_quantity = $item->qty;
+            $this->orderDetail->order_id            = $this->order->id;
+            $this->orderDetail->product_id          = $item->id;
+            $this->orderDetail->product_name        = $item->name;
+            $this->orderDetail->product_image       = $item->options->image;
+            $this->orderDetail->product_price       = $item->price;
+            $this->orderDetail->product_quantity    = $item->qty;
             $this->orderDetail->save();
 
 
@@ -93,9 +95,10 @@ class CheckoutController extends Controller
         return redirect('/complete-order')->with('success','Your order has been saved successfully.Please wait,we will contact you soon.');
     }
 
+
     public function orderComplete()
     {
-        return view('website.checkout.complete-order');
+        return view('website.checkout.complete-order',['categories' => Category::all(),]);
     }
 
     public function orderPassword($id)

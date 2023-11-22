@@ -7,6 +7,7 @@ use App\Models\Order;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Category;
 use App\Models\Customer;
+use App\Models\Wishlist;
 use Illuminate\Http\Request;
 
 
@@ -16,9 +17,11 @@ class CustomerDashboardController extends Controller
     public function index()
     {
         return view('customer.home',[
-            'categories' => Category::all(),
-            'customer' => Customer::find(Session::get('customer_id')),
-            'orders' => Order::where('customer_id', Session::get('customer_id'))->orderBy('id', 'desc')->take(3)->get(),
+            'categories'        => Category::all(),
+            'customer'          => Customer::find(Session::get('customer_id')),
+            'orders'            => Order::orderBy('id', 'desc')->get(),
+            'order'             => Order::where('customer_id',Session::get('customer_id'))->orderBy('id','desc')->first(),
+            'wishlistItems'     => Wishlist::all(),
         ]);
     }
 
@@ -59,15 +62,23 @@ class CustomerDashboardController extends Controller
         Customer::updateProfileImage($request);
         return back()->with('success', 'Profile Photo updated successfully.');
     }
-    public function order()
+    public function orderHistory()
     {
-        return view('customer.order');
+        return view('customer.order-history',['orders' => Order::all(),]);
     }
 
     public function orderDetail()
     {
         return view('customer.order-detail');
     }
+    public function wishlist()
+    {
+        return view('customer.wishlist');
+    }
+
+   
+
+  
 
 
 
