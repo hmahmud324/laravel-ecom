@@ -30,7 +30,7 @@
                         <div class="row mb-4">
                             <label class="col-md-3 form-label">Category Name</label>
                             <div class="col-md-9">
-                                <select name="category_id" class="form-control" required>
+                                <select name="category_id" class="form-control select2" required>
                                     <option disabled selected> -- Select Product Category -- </option>
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}" @selected($category->id == $product->category_id)>
@@ -42,7 +42,7 @@
                         <div class=" row mb-4">
                             <label for="productName" class="col-md-3 form-label">Brand Name</label>
                             <div class="col-md-9">
-                                <select class="form-control" required name="brand_id">
+                                <select class="form-control select2" required name="brand_id">
                                     <option disabled selected> -- Select Product Brand --</option>
                                     @foreach ($brands as $brand)
                                         <option value="{{ $brand->id }}" @selected($brand->id == $product->brand_id)>{{ $brand->name }}
@@ -54,7 +54,7 @@
                         <div class=" row mb-4">
                             <label for="productName" class="col-md-3 form-label">Product Name</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" value="{{ $product->name }}" name="name"
+                                <input type="text" class="form-control select2" value="{{ $product->name }}" name="name"
                                     placeholder="Product Name" />
                                 <span class="text-danger">{{ $errors->has('name') ? $errors->first('name') : ' ' }}</span>
                             </div>
@@ -108,7 +108,7 @@
                         <div class="row mb-4">
                             <label class="col-md-3 form-label">Product Image</label>
                             <div class="col-md-9">
-                                <input type="file" class="form-control" name="image" style="height: auto; max-width: 100%;" />
+                                <input type="file" class="dropify" name="image" style="height: auto; max-width: 100%;" />
                                 <img src="{{ asset($product->image) }}" alt="" height="100" width="120"
                                     style="max-width: 100%" />
                             </div>
@@ -134,4 +134,5 @@
             </div>
         </div>
     </div>
+    
 @endsection

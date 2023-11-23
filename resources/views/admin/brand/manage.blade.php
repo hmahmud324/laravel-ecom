@@ -42,7 +42,7 @@
                                             <td>{{ $brand->status == 1 ? 'Published' : 'Unpublshed' }}</td>
                                             <td class="d-flex">
                                                 <a href="{{ route('brand.edit', $brand->id) }}"
-                                                    class="btn btn-success btn-sm rounded-11 me-2" data-bs-toggle="tooltip"
+                                                    class="btn btn-success rounded-11 me-2" data-bs-toggle="tooltip"
                                                     data-bs-original-title="Edit Brand">
                                                     <i class="fa fa-edit" style=" font-size: .95rem;"></i>
                                                 </a>

@@ -66,7 +66,7 @@ var swiper = new Swiper(".bannerSwiper", {
 var swiper2 = new Swiper(".brandSwiper", {
     slidesPerView: 2,
     spaceBetween: 12,
-    loop: true,
+   loop: true,
     mousewheel: true,
     breakpoints: {
         375:{
@@ -96,7 +96,7 @@ var swiper3 = new Swiper(".topCategoriesSwiper", {
     slidesPerView: 1,
     spaceBetween: 12,
     centeredSlides: true,
-    // loop: true,
+     loop: true,
     navigation: {
         nextEl: ".categoriesSwiper-button-next",
         prevEl: ".categoriesSwiper-button-prev",
@@ -120,7 +120,7 @@ var swiper3 = new Swiper(".topCategoriesSwiper", {
 var swiper4 = new Swiper(".featureSwiper", {
     slidesPerView: 1,
     spaceBetween: 24,
-    // loop: false,
+    loop: true,
     navigation: {
         nextEl: ".featureSwiper-button-next",
         prevEl: ".featureSwiper-button-prev",
@@ -188,7 +188,7 @@ var swiper6 = new Swiper(".testimonialSwiper", {
 var galleryThumbs = new Swiper(".gallery-thumbs", {
     freeMode: true,
     slidesPerView: 3,
-    loop: true,
+    // loop: true,
     navigation: {
         nextEl: '.gallery-button-next',
         prevEl: '.gallery-button-prev',
@@ -201,7 +201,7 @@ var galleryThumbs = new Swiper(".gallery-thumbs", {
 
 var galleryMain = new Swiper(".gallery-main", {
     mousewheel: true,
-    loop: true,
+    // loop: true,
     navigation: {
         nextEl: '.gallery-button-next',
         prevEl: '.gallery-button-prev',

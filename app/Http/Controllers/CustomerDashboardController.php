@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use Session;
 use App\Models\Order;
-use Illuminate\Support\Facades\Hash;
 use App\Models\Category;
 use App\Models\Customer;
 use App\Models\Wishlist;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 
 
@@ -49,9 +49,7 @@ class CustomerDashboardController extends Controller
             if ($request->filled('password')) {
                 $customer->password = bcrypt($request->password);
             }
-    
             $customer->save();
-    
             return back()->with('success', 'Profile info updated successfully.');
         } else {
             return back()->with('error', 'Current password is incorrect.');

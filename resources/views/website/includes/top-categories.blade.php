@@ -29,9 +29,10 @@
                     <div class="product-card-02">
                         <div class="product-thumb">
                             <a href="products.html"><img
-                                    src="{{ asset($category->image)}}"
-                                    alt="" style="height:424px; width:424px;"></a>
+                                src="{{ asset($category->image)}}"
+                                alt="" style="height:424px; width:424px;"></a>
                         </div>
+
                         <div class="product-info">
                             <h2><a href="#">{{$category->name}}</a></h2>
                             @php

@@ -24,21 +24,31 @@ class EcommerceController extends Controller
             'testimonials'       => Testimonial::where('status',1)->get(),
             'categories'         => Category::all(),
             'products'           => Product::all(),
+            'recentProducts'     => Product::orderBy('id', 'desc')->take(5)->get(),
         ]);
     }
 
     public function product(){
         return view('website.product.index',[
-            'categories'  =>Category::all(),
-            'products'    => Product::all(),
+            'categories'  =>    Category::all(),
+            'products'    =>    Product::all(),
         ]);
     }
 
 
     public function detail($id){
+
+        $product        = Product::find($id);
+        $category       = Category::find($product->category_id);
+
         return view('website.product.detail',[
-            'categories'  => Category::all(),
-            'product'     => Product::find($id),
+            'categories'            => Category::all(),
+            'product'               => $product,
+            'category'              => $category,
+            'relatedProducts'       => Product::where('category_id', $category->id)
+                                        ->where('id', '!=', $id)
+                                        ->take(3)
+                                        ->get(),
         ]);
     }
     public function history(){
@@ -53,9 +63,7 @@ class EcommerceController extends Controller
     {
         $categories         = Category::all();
         $query              = $request->input('query');
-
         $products           = Product::query();
-
 
         if (empty($query)) {
             return redirect()->back()->with('error', ['message' => 'Please enter a search query.']);

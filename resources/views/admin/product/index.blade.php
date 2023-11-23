@@ -29,7 +29,7 @@
                         <div class="row mb-4">
                             <label class="col-md-3 form-label">Category Name</label>
                             <div class="col-md-9">
-                                <select name="category_id" id="categoryId" class="form-control" required>
+                                <select name="category_id" id="categoryId" class="form-control select2" required>
                                     <option disabled selected> -- Select Product Category -- </option>
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -40,7 +40,7 @@
                         <div class="row mb-4">
                             <label for="productName" class="col-md-3 form-label">Brand Name</label>
                             <div class="col-md-9">
-                                <select class="form-control" required name="brand_id">
+                                <select class="form-control select2" required name="brand_id">
                                     <option disabled selected> -- Select Product Brand --</option>
                                     @foreach ($brands as $brand)
                                         <option value="{{ $brand->id }}">{{ $brand->name }}</option>
@@ -105,7 +105,7 @@
                             <label class="col-md-3 form-label">Product Image</label>
                             <div class="col-md-9">
                                 <div class="input-group">
-                                    <input type="file" class="form-control" name="image" style="height: auto;" />
+                                    <input type="file" class="dropify" name="image" style="height: auto;" />
                                 </div>
                             </div>
                         </div>
@@ -127,4 +127,5 @@
             </div>
         </div>
     </div>
+    
 @endsection

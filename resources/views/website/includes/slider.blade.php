@@ -24,10 +24,10 @@
                          </div>
                      </div>
                      <div class="md:w-1/2 w-full flex justify-center items-center relative">
-                         <img src="{{ asset($hero_slider->image) }}" alt="">
+                         <img src="{{ asset($hero_slider->image) }}" alt="" style="height: 420px; wisth:420px;">
                          <div class="inline-block absolute top-0 right-0">
                              <img src="{{ asset('/') }}website/assets/images/all-img/discount.png" alt="">
-                             <p class="absolute top-[33px] text-[#F05C52] text-4xl font-bold right-7">{{ $hero_slider->discount }}%</p>
+                             <p class="absolute top-[33px] text-[#F05C52] text-4xl font-bold right-9">{{ $hero_slider->discount }}%</p>
                              <p class="absolute text-lg font-normal top-[68px] right-10">Discount</p>
                          </div>
                      </div>

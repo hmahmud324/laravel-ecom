@@ -49,7 +49,7 @@
                     <label class="col-md-3 form-label">Image</label>
                     <div class="col-md-9">
                         <div class="input-group">
-                            <input type="file" class="form-control"  name="image" style="height: auto;">
+                            <input type="file" class="dropify"  name="image" style="height: auto;">
                         </div>
                     </div>
                 </div>
@@ -63,5 +63,4 @@
         </div>
     </div>
 </div>
-
 @endsection

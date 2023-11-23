@@ -55,7 +55,7 @@
                     <label for="inputDiscountImage" class="col-md-3 form-label">Image</label>
                     <div class="col-md-9">
                         <div class="input-group">
-                           <input type="file" class="form-control" name="image" style="height: auto; max-width: 100%;" />
+                           <input type="file" class="dropify" name="image" style="height: auto; max-width: 100%;" />
                            <img src="{{ asset($hero_slider->image) }}" alt="" height="100" width="120"
                            style="max-width: 100%" />
                         </div>
@@ -79,4 +79,9 @@
         </div>
     </div>
  </div>
+ @push('drop')
+ $(document).ready(function() {
+     $('.dropify').dropify();
+   });
+ @endpush
 @endsection

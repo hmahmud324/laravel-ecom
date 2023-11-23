@@ -38,23 +38,23 @@
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$order->id}}</td>
-                                    <td>{!! 'Name :'. $order->customer->name.'<br/>'.'Mobile : '.$order->customer->mobile !!}</td>
+                                    <td>{!! 'Name :'. $order->customer->name.'<br/>'.'Mobile : '.$order->customer->mobile.'<br/>'.'Email : '.$order->customer->email !!}</td>
                                     <td>{{$order->order_date}}</td>
                                     <td>{{$order->order_status}}</td>
                                     <td>
-                                        <a href="{{route('admin.order-detail', ['id' => $order->id])}}" title="Order Detail"   class="btn btn-success btn-sm me-1">
+                                        <a href="{{route('admin.order-detail', ['id' => $order->id])}}" title="Order Detail"   class="btn btn-success me-1">
                                             <i class="fa fa-bookmark-o"></i>
                                         </a>
-                                        <a href="{{route('admin.order-edit', ['id' => $order->id])}}" title="Order Edit" class="btn btn-sm {{$order->order_status == 'Complete' ? 'disabled btn-secondary' : 'btn-primary'}}">
+                                        <a href="{{route('admin.order-edit', ['id' => $order->id])}}" title="Order Edit" class="btn {{$order->order_status == 'Complete' ? 'disabled btn-secondary' : 'btn-primary'}}">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <a href="{{route('admin.order-invoice', ['id' => $order->id])}}" title="Order Invoice" class="btn btn-info btn-sm me-1">
+                                        <a href="{{route('admin.order-invoice', ['id' => $order->id])}}" title="Order Invoice" class="btn btn-info me-1">
                                             <i class="fa fa-dollar"></i>
                                         </a>
-                                        <a href="{{route('admin.download-order-invoice', ['id' => $order->id])}}"  target="_blank" title=" Download Order Invoice" class="btn btn-secondary btn-sm me-1">
+                                        <a href="{{route('admin.download-order-invoice', ['id' => $order->id])}}"  target="_blank" title=" Download Order Invoice" class="btn btn-secondary me-1">
                                             <i class="fa fa-print"></i>
                                         </a>
-                                        <a href="{{route('admin.order-delete', ['id' => $order->id])}}" title="Order Delete" onclick="return confirm('Are you sure to delete this..');" class="btn btn-sm {{$order->order_status == 'Cancel' ? ' btn-danger' : 'disabled btn-secondary'}}">
+                                        <a href="{{route('admin.order-delete', ['id' => $order->id])}}" title="Order Delete" onclick="return confirm('Are you sure to delete this..');" class="btn {{$order->order_status == 'Cancel' ? ' btn-danger' : 'disabled btn-secondary'}}">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </td>

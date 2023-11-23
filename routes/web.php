@@ -1,7 +1,10 @@
 <?php
 
 
-
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartController;
@@ -200,5 +203,42 @@ Route::middleware(['auth','role:admin'])->group(function(){
 
 });
 
+
+
+Route::get('/forgot-password', function () {
+    return view('auth.forgot-password');
+})->middleware('guest')->name('password.request');
+
+
+Route::post('/forgot-password', function (Request $request) {
+    $request->validate(['email' => 'required|email']);
+
+    $status = Password::sendResetLink(
+        $request->only('email')
+    );
+
+    return $status === Password::RESET_LINK_SENT
+               ? back()->with(['status' => __($status)])
+               : back()->withErrors(['email' => __($status)]);
+})->middleware('guest')->name('password.email');
+
+
+Route::get('/reset-password/{token}', function ($token) {
+    return view('auth.reset-password', ['token' => $token]);
+})->middleware('guest')->name('password.reset');
+
+
+
+Route::post('/confirm-password', function (Request $request) {
+    if (! Hash::check($request->password, $request->user()->password)) {
+        return back()->withErrors([
+            'password' => ['The provided password does not match our records.']
+        ]);
+    }
+
+    $request->session()->passwordConfirmed();
+
+    return redirect()->intended();
+})->middleware(['auth', 'throttle:6,1']);
 
 

@@ -49,7 +49,7 @@
                                                 <td class="d-flex">
                                                     <a href="{{ route('product.show', $product->id) }}"
                                                         data-bs-toggle="tooltip" data-bs-original-title="Product Detail"
-                                                        class="btn btn-info btn-sm magic-hover magic-hover__square rounded-11 me-2">
+                                                        class="btn btn-info btn-sm rounded-11 me-2">
                                                         <i class="fa fa-info" style=" font-size: .95rem;"></i>
                                                     </a>
                                                     <a href="{{ route('product.edit', $product->id) }}"
