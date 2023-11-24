@@ -57,11 +57,10 @@ Route::controller(EcommerceController::class)->group(function (){
 
     Route::controller(CustomerAuthController::class)->group(function(){
         Route::get('/customer-registration', 'registration')->name('customer.registration');
-        Route::post('/customer-registration', 'newRegistration')->name('customer.registration');
+        Route::post('/customer-register', 'newRegistration')->name('customer.registration');
         Route::get('/customer-login', 'login')->name('customer.login');
         Route::post('/customer-login', 'loginCheck')->name('customer.login');
         Route::get('/customer-logout', 'logout')->name('customer.logout');
-
     });
 
 

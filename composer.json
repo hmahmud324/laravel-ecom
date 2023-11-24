@@ -8,6 +8,7 @@
         "php": "^8.1",
         "barryvdh/laravel-dompdf": "^2.0",
         "cyrildewit/eloquent-viewable": "^7.0",
+        "dgvai/laravel-sslcommerz": "^1.0",
         "guzzlehttp/guzzle": "^7.2",
         "jorenvanhocht/laravel-share": "^4.2",
         "laravel/framework": "^10.10",

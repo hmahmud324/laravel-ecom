@@ -24,7 +24,7 @@
                          </div>
                      </div>
                      <div class="md:w-1/2 w-full flex justify-center items-center relative">
-                         <img src="{{ asset($hero_slider->image) }}" alt="" style="height: 420px; wisth:420px;">
+                         <img src="{{ asset($hero_slider->image) }}" alt="" style="height: 420px; width:420px;">
                          <div class="inline-block absolute top-0 right-0">
                              <img src="{{ asset('/') }}website/assets/images/all-img/discount.png" alt="">
                              <p class="absolute top-[33px] text-[#F05C52] text-4xl font-bold right-9">{{ $hero_slider->discount }}%</p>
@@ -33,8 +33,8 @@
                      </div>
                  </div>
              </div>
+             @endforeach
          </div>
-         @endforeach
          <div class="swiper-button-next banner-slider-button"></div>
          <div class="swiper-button-prev banner-slider-button"></div>
          <div class="swiper-pagination"></div>

@@ -37,7 +37,6 @@ class EcommerceController extends Controller
 
 
     public function detail($id){
-
         $product        = Product::find($id);
         $category       = Category::find($product->category_id);
 
