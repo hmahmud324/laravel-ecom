@@ -48,7 +48,7 @@
                                                 width="70" /></td>
                                          <td>{{ $hero_slider->discount }}</td>
                                          <td>{{ $hero_slider->status == 1 ? 'Published' : 'Unpublshed' }}</td>
-                                         <td>{{ $hero_slider->featured_status == 1 ? 'Featured' : 'Not featured' }}</td>
+                                         <td>{{ $hero_slider->featured_status == 0 ? 'Featured' : 'Not featured' }}</td>
                                          <td class="d-flex">
                                              <a href="{{ route('hero-slider.edit', ['id' => $hero_slider->id]) }}"
                                                 data-bs-toggle="tooltip" data-bs-original-title="Edit Hero Slider"

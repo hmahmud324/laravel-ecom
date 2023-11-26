@@ -45,7 +45,7 @@
                                                         width="70" /></td>
                                                 <td>{{ $product->stock_amount }}</td>
                                                 <td>{{ $product->status == 1 ? 'Published' : 'Unpublshed' }}</td>
-                                                <td>{{ $product->featured_status == 1 ? 'Featured' : 'Not Featured' }}</td>
+                                                <td>{{ $product->featured_status == 0 ? 'Featured' : 'Not Featured' }}</td>
                                                 <td class="d-flex">
                                                     <a href="{{ route('product.show', $product->id) }}"
                                                         data-bs-toggle="tooltip" data-bs-original-title="Product Detail"
@@ -60,8 +60,8 @@
                                                     <a href="{{ route('product.update-status', ['id' => $product->id]) }}"
                                                         data-bs-toggle="tooltip"
                                                         data-bs-original-title="Update Product Status"
-                                                        class="btn {{ $product->featured_status == 1 ? 'btn-primary' : 'btn-warning' }} btn-sm  rounded-11 me-2">
-                                                        <i class="fa {{ $product->featured_status == 1 ? 'fa-arrow-circle-o-up' : 'fa-arrow-circle-o-down' }}"
+                                                        class="btn {{ $product->featured_status == 0 ? 'btn-primary' : 'btn-warning' }} btn-sm  rounded-11 me-2">
+                                                        <i class="fa {{ $product->featured_status == 0 ? 'fa-arrow-circle-o-up' : 'fa-arrow-circle-o-down' }}"
                                                             style=" font-size: .95rem;"></i>
                                                     </a>
                                                     <form action="{{ route('product.destroy', $product->id) }}"
